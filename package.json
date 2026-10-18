@@ -1,0 +1,49 @@
+{
+  "name": "dsh-image-hunt",
+  "version": "1.4.0",
+  "type": "module",
+  "main": "index.js",
+  "description": "Multi-source image search & download for DeepSeek Harness: 19 engines (Baidu / Bing / 360 / Duitang / Huaban / DuckDuckGo / Yandex / Openverse / Wikimedia / Pixiv / Wallhaven / Konachan / Safebooru / Iconify), results shown inline in the conversation.",
+  "meta": {
+    "title": "搜图下载",
+    "description": "多图源搜网图（国内 5 源 + 国外 8 源 + 二次元 4 源）并下载进会话工作区，结果直接在对话里显示"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "README.md",
+    "README.en.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "dsh",
+    "image",
+    "image-search",
+    "image-download",
+    "pixiv",
+    "booru",
+    "搜图"
+  ],
+  "license": "MIT",
+  "author": "fomalhaut1998",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fomalhaut1998/dsh-image-hunt.git"
+  },
+  "homepage": "https://github.com/fomalhaut1998/dsh-image-hunt#readme",
+  "bugs": {
+    "url": "https://github.com/fomalhaut1998/dsh-image-hunt/issues"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

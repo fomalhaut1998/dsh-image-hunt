@@ -1,5 +1,6 @@
-// dsh-image-hunt v1.4 — 多图源搜图（国内源直连 / 国外源走本机代理）→ 下载进会话工作区 → 结果在对话里直接出图
+// dsh-image-hunt v1.4.1 — 多图源搜图（国内源直连 / 国外源走本机代理）→ 下载进会话工作区 → 结果在对话里直接出图
 // v1.4：加二次元图源 pixiv / wallhaven / konachan / safebooru（engine=anime），pixiv 原图 + noAI 过滤，落盘按文件头判格式
+// v1.4.1：文档重写（图源数字/参数表/免责）+ 仓库根 cli.mjs 独立 CLI；未知图源的报错改为按 ALIAS 动态列别名
 // 宿主半：注册 3 个工具 (image_hunt / image_search / image_download) + 1 个内联 skill。
 // 零外部依赖：原生 fetch + node:fs。二进制写只允许落在会话工作区内（工具层 safeJoin 收口）。
 // 图源实现同时被工作区脚本 tools/image-hunt/lib.mjs 复用（它只做 re-export，避免两份实现漂移）。
@@ -654,7 +655,7 @@ export function resolveSources(spec) {
     const k = String(x).trim().toLowerCase()
     if (ALIAS[k]) return ALIAS[k]
     const hit = [...ids].find((i) => i.toLowerCase() === k)
-    if (!hit) throw new Error('未知图源 "' + x + '"。可用：' + PHOTO_IDS.join(' / ') + ' / icons / auto / all / intl / cc / anime / moe')
+    if (!hit) throw new Error('未知图源 "' + x + '"。可用：' + PHOTO_IDS.join(' / ') + ' / icons / ' + Object.keys(ALIAS).filter((k) => k !== 'default' && k !== 'icons').join(' / '))
     return [hit]
   }
   if (spec === undefined || spec === null || spec === '') return ALIAS.auto.slice()

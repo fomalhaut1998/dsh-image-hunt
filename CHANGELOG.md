@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.4.1 — 2026-10-18 · 文档重写 + 独立 CLI 开源
+
+- **新增 `cli.mjs`（仓库根）**：不装 DSH 也能用 —— `node cli.mjs "关键词" --n 4 --engine anime --min-pixels 1200`。直接 import `./index.js`，不经过宿主；`package.json` 加了 `bin.dsh-image-hunt`，`files` 也带上它。实测冒烟：`--n 1 --engine baidu` → candidates 59 / downloaded 1 / exit 0。
+- **修正图源数量**：旧 README 写「19 个图源：国内 5 / 国外 8 / 二次元 4」，与代码不符（`SOURCES` 是 **14 条**，5+8+4 也不等于 19）。现统一为「**14 个图源 + 7 个别名** = 21 个 engine 名」，并把漏掉的 `both` 补进表。
+- **补齐三张参数表**：`image_hunt`（query / count / engine / sources / minPixels / noAI / dir / collection / color）、`image_search`、`image_download`（urls / dir / prefix / referer / proxy），含默认值与取值范围。此前 `minPixels` 在 README 里一次都没出现。
+- **新增 Requirements 表**：DSH 0.2.x（需 `dsh.bundle` 补丁支持）、Node ≥ 18、零依赖、三平台通用、代理仅国外源需要、输出收口于会话工作区。
+- **新增「快速上手」与「独立 CLI」两节**，给可直接照抄的问法与命令。
+- **新增「合规与免责」**：只做公开接口检索 + 下载、不绕过登录/付费墙、图片版权归原作者、MIT 只覆盖代码、自用/商用前自行确认授权、不要高频猛刷。
+- **英文版与中文对齐**：README.en.md 从 92 行扩到 247 行，结构与中文一致（要求 / 参数表 / 返回 JSON / 别名 / CLI / 代理三个坑 / 免责）。
+- 两份 README 都加了 badge（npm 版本 / MIT / Node / DSH 插件）。
+- 纯文档 + 新增 CLI，无运行时行为改动。
+
 ## 1.4.0 — 2026-10-18 · Anime sources · first npm release
 
 Published as `dsh-image-hunt` on npm — install with `dsh plugin --profile web add dsh-image-hunt`.

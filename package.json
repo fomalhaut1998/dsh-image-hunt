@@ -1,12 +1,12 @@
 {
   "name": "dsh-image-hunt",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "type": "module",
   "main": "index.js",
-  "description": "Multi-source image search & download for DeepSeek Harness: 19 engines (Baidu / Bing / 360 / Duitang / Huaban / DuckDuckGo / Yandex / Openverse / Wikimedia / Pixiv / Wallhaven / Konachan / Safebooru / Iconify), results shown inline in the conversation.",
+  "description": "Multi-source image search & download for DeepSeek Harness: 14 engines + 7 aliases (Baidu / Bing / 360 / Duitang / Huaban / Iconify / DuckDuckGo / Yandex / Openverse / Wikimedia / Pixiv / Wallhaven / Konachan / Safebooru), results shown inline in the conversation.",
   "meta": {
     "title": "搜图下载",
-    "description": "多图源搜网图（国内 5 源 + 国外 8 源 + 二次元 4 源）并下载进会话工作区，结果直接在对话里显示"
+    "description": "多图源搜网图（14 个图源 + 7 个别名：国内 5 / 国外 4 / 二次元 4 + Iconify 图标库）并下载进会话工作区，结果直接在对话里显示"
   },
   "exports": {
     ".": "./index.js",
@@ -14,6 +14,7 @@
   },
   "files": [
     "index.js",
+    "cli.mjs",
     "cordis.patch.yml",
     "README.md",
     "README.en.md",
@@ -49,5 +50,8 @@
     "bundle": {
       "patch": "./cordis.patch.yml"
     }
+  },
+  "bin": {
+    "dsh-image-hunt": "./cli.mjs"
   }
 }

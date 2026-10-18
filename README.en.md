@@ -2,7 +2,7 @@
 
 Multi-source image search for **DeepSeek Harness**: search, download into the session workspace, and show the results inline in the conversation. Zero runtime dependencies.
 
-[中文](README.md) · [Changelog](CHANGELOG.md)
+[中文](README.md) · [Changelog](CHANGELOG.md) · [npm](https://www.npmjs.com/package/dsh-image-hunt)
 
 - 19 engines: 5 Chinese, 8 international, 4 anime/illustration sources (plus two icon-oriented aliases)
 - Three tools: `image_hunt` (search + download + render), `image_search` (search only), `image_download` (save a known direct URL)
@@ -12,8 +12,14 @@ Multi-source image search for **DeepSeek Harness**: search, download into the se
 ## Install
 
 ```sh
+# from npm
+dsh plugin --profile web add dsh-image-hunt
+
+# or straight from GitHub, tracking the latest commit
 dsh plugin --profile web add github:fomalhaut1998/dsh-image-hunt
 ```
+
+Published on [npm](https://www.npmjs.com/package/dsh-image-hunt) — current version 1.4.0.
 
 Restart DSH afterwards — the host caches ESM modules, so edits to `index.js` only take effect after a restart.
 

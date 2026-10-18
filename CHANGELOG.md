@@ -1,6 +1,10 @@
 # Changelog
 
-## 1.4.0 — 2026-10-18 · Anime sources
+## 1.4.0 — 2026-10-18 · Anime sources · first npm release
+
+Published as `dsh-image-hunt` on npm — install with `dsh plugin --profile web add dsh-image-hunt`.
+Package renamed from `@local/dsh-image-hunt`; the repo root **is** the plugin directory, so
+`github:fomalhaut1998/dsh-image-hunt` installs it directly.
 
 - Added four login-free sources: `pixiv`, `wallhaven`, `konachan`, `safebooru`. Aliases: `anime` = pixiv + wallhaven + konachan; `moe` adds safebooru.
 - Pixiv: search via `ajax/search/artworks` (`popular_d` first, `date_d` to top up); downloads resolve `urls.original` through `ajax/illust/<id>`. `i.pximg.net` requires `Referer: https://www.pixiv.net/` (403 otherwise). Measured `aiType` semantics: **1 = non-AI, 2 = AI**; the server-side `ai_type` parameter has no effect, so filtering is client-side → new `noAI` option.

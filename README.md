@@ -2,7 +2,7 @@
 
 多图源搜图 → 下载进当前会话工作区 → 图片直接在对话里显示。**DeepSeek Harness 宿主插件，零外部依赖。**
 
-[English](README.en.md) · [更新日志](CHANGELOG.md)
+[English](README.en.md) · [更新日志](CHANGELOG.md) · [npm](https://www.npmjs.com/package/dsh-image-hunt)
 
 - 19 个图源：国内 5 个、国外 8 个、二次元 4 个，另有 2 个图标相关组合
 - 三个工具：`image_hunt`（搜+下+显示）、`image_search`（只搜）、`image_download`（已知直链落盘）
@@ -12,7 +12,10 @@
 ## 安装
 
 ```sh
-# 从 GitHub 装（推荐，无需发布到 npm）
+# 从 npm 装（推荐）
+dsh plugin --profile web add dsh-image-hunt
+
+# 或直接从 GitHub 装，跟最新提交
 dsh plugin --profile web add github:fomalhaut1998/dsh-image-hunt
 
 # 或本地开发：把本仓库 link 进 profile
@@ -20,6 +23,8 @@ dsh plugin --profile web add github:fomalhaut1998/dsh-image-hunt
 #   dependencies["dsh-image-hunt"] = "link:/path/to/dsh-image-hunt"
 #   并把 "dsh-image-hunt" 加进 dsh.profile.bundles
 ```
+
+已发布：[npmjs.com/package/dsh-image-hunt](https://www.npmjs.com/package/dsh-image-hunt) · 当前版本 1.4.0。
 
 装完**重启 DSH**（宿主会缓存 ESM 模块，改完 `index.js` 也必须重启才生效）。
 

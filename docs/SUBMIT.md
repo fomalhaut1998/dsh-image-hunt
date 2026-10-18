@@ -8,7 +8,7 @@
 | 要求 | 现状 |
 |---|---|
 | 仓库声明 `dsh.bundle` manifest | ✅ `package.json` → `dsh.bundle.patch`，旁边有 `cordis.patch.yml` |
-| 仓库有真实可用的代码 | ✅ `index.js`（54 KB，19 个图源、3 个工具） |
+| 仓库有真实可用的代码 | ✅ `index.js`（54 KB，14 个图源 + 7 个别名、3 个工具）+ 仓库根 `cli.mjs`（独立 CLI，不装 DSH 也能跑） |
 | 仓库创建满 **1 天**（CI 自动检查） | ⏳ 仓库建于 2026-10-18T09:45Z，**2026-10-19 之后**才满足 |
 | 加了 `dsh-plugin` topic | ✅ |
 | 持续维护 | ✅ |
@@ -24,8 +24,8 @@ url: https://github.com/fomalhaut1998/dsh-image-hunt
 name: fomalhaut1998/dsh-image-hunt
 category: tools
 description:
-  en: Multi-source image search and download (19 engines across Baidu, Bing, 360, Duitang, Huaban, DuckDuckGo, Yandex, Openverse, Wikimedia, Pixiv, Wallhaven, Konachan, Safebooru and Iconify) that saves results into the session workspace with a per-file meta.json and renders them inline in the conversation.
-  zh: 多图源搜图并下载（19 个图源，覆盖百度/必应/360/堆糖/花瓣/DuckDuckGo/Yandex/Openverse/维基共享/Pixiv/Wallhaven/Konachan/Safebooru/Iconify），落盘进会话工作区、逐张写 meta.json，图片直接在对话里显示。
+  en: Multi-source image search and download (14 engines + 7 aliases, covering Baidu, Bing, 360, Duitang, Huaban, Iconify, DuckDuckGo, Yandex, Openverse, Wikimedia, Pixiv, Wallhaven, Konachan and Safebooru) that saves results into the session workspace with a per-file meta.json and renders them inline in the conversation; ships a standalone CLI as well.
+  zh: 多图源搜图并下载（14 个图源 + 7 个别名，覆盖百度/必应/360/堆糖/花瓣/Iconify/DuckDuckGo/Yandex/Openverse/维基共享/Pixiv/Wallhaven/Konachan/Safebooru），落盘进会话工作区、逐张写 meta.json，图片直接在对话里显示；另附独立 CLI。
 ```
 
 > README 不用动：列表由 `data/plugins/*.yml` 自动生成。
@@ -50,7 +50,7 @@ git commit -m "Add fomalhaut1998/dsh-image-hunt"
 git push -u origin add-fomalhaut1998-dsh-image-hunt
 gh pr create --repo awesome-dsh-plugin/awesome-dsh-plugin \
   --title "Add fomalhaut1998/dsh-image-hunt" \
-  --body "Multi-source image search & download for DSH — 19 engines, workspace confinement, inline rendering. Declares `dsh.bundle` and ships `cordis.patch.yml`."
+  --body "Multi-source image search & download for DSH — 14 engines + 7 aliases, workspace confinement, inline rendering, plus a standalone CLI. Declares `dsh.bundle` and ships `cordis.patch.yml`."
 ```
 
 ## PR 描述模板
@@ -60,7 +60,8 @@ gh pr create --repo awesome-dsh-plugin/awesome-dsh-plugin \
 
 `dsh-image-hunt` registers three tools (`image_hunt` / `image_search` / `image_download`) plus an inline skill:
 
-- 19 engines: Baidu, Bing, 360, Duitang, Huaban, Iconify (direct) and DuckDuckGo, Yandex, Openverse, Wikimedia, Pixiv, Wallhaven, Konachan, Safebooru (through a built-in CONNECT tunnel, so no host env vars are needed).
+- 14 engines + 7 aliases: Baidu, Bing, 360, Duitang, Huaban, Iconify (direct) and DuckDuckGo, Yandex, Openverse, Wikimedia, Pixiv, Wallhaven, Konachan, Safebooru (through a built-in CONNECT tunnel, so no host env vars are needed).
+- `cli.mjs` in the repo root gives the same search/download without the plugin: `node cli.mjs "ghibli landscape" --engine anime --noai --n 6`.
 - Downloads land inside the session workspace (`safeJoin`), one `meta.json` per batch with source page, title, real pixel size and license.
 - Images are returned as `{type:'image', attachment}` blocks, so the stock tool card renders them — no client half.
 - Pixel sizes are read from file headers and formats are sniffed from magic bytes (several boorus serve a `.jpg` URL whose bytes are PNG).

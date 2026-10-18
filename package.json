@@ -32,6 +32,10 @@
     "搜图"
   ],
   "license": "MIT",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
   "author": "fomalhaut1998",
   "repository": {
     "type": "git",

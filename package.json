@@ -52,6 +52,6 @@
     }
   },
   "bin": {
-    "dsh-image-hunt": "./cli.mjs"
+    "dsh-image-hunt": "cli.mjs"
   }
 }
